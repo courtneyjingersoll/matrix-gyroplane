@@ -1,0 +1,10 @@
+<stack>
+  <description brief="codebase">codebase</description>
+  <author>Maintained by Team Evasion</author>
+  <license>BSD</license>  
+  <review status="unreviewed" notes=""/>
+  <url>http://ros.org/wiki/codebase</url>
+  <depend stack="ros" /> <!-- roslib -->
+  <depend stack="ros_comm" /> <!-- std_msgs, roscpp -->
+
+</stack>
