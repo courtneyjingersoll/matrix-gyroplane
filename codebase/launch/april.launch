@@ -1,0 +1,64 @@
+<launch>
+<group ns="cam0">
+  <!-- Cam 0 --> 
+  <param name="tf_prefix" value="cam0" />
+  <node name="usb_cam_vid0" pkg="usb_cam" type="usb_cam_node">
+    <param name="video_device" value="/dev/video0" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <!--<param name="image_width" value="160" />-->
+    <!--<param name="image_height" value="120" />-->
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam0" />
+    <param name="io_method" value="mmap"/>
+  </node>
+<!--
+  <node name="image_view_vid0" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="usb_cam_vid0/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+-->
+
+  <node pkg="april_tags_node" type="execute" name="april_tags_publishers_cam0" args=" april.ros.TagPublisher">
+
+    <!-- Detector parameters (default values placed into launch file) -->
+    <param name="seg_sigma" value="0.8" />
+    <param name="sigma" value="0.0" />
+    <param name="min_mag" value="0.004" />
+    <param name="max_edge_cost" value="0.5235987755982988" />
+    <param name="mag_thresh" value="1200.0" />
+    <param name="theta_thresh" value="100.0" />
+    <param name="error_bits" value="1" />
+    <param name="weight_scale" value="100" />
+    <param name="seg_decimate" value="false" />
+    <param name="debug" value="false" />
+
+    <!-- Detector tag information -->
+    <param name="tag_family" value="april.tag.Tag36h11" />
+    <param name="tag_size" value="0.1755" />
+
+    <!-- Camera Information -->
+    <param name="use_camera_info" value="false" />
+    <param name="focal_length_x" value="485.6" />
+    <param name="focal_length_y" value="485.6" /> 
+
+    <!-- Supplementary information publication -->
+    <param name="publish_visualization" value="false" />
+    <param name="broadcast_tf" value="false" />
+    <param name="tag_vis_magnification" value="2.0" />
+    
+    <remap from="image_raw" to="usb_cam_vid0/image_raw"/>
+    <remap from="camera_info" to="usb_cam_vid0/camera_info"/>
+    <remap from="/visualization_marker_array" to="/cam0/visualization_marker_array"/>
+    <remap from="/tags" to="/cam0/tags"/>
+	
+  </node>
+ 
+  <node pkg="hoverTracker" type="tag_tf_broadcaster.py" name="tag_tf_broadcaster_cam0" output="screen">
+    <remap from="/tags" to="/cam0/tags"/>
+  </node>
+
+  <!-- <node pkg="rviz" type="rviz" output="screen" name="rviz"/> -->
+</group>
+
+</launch>

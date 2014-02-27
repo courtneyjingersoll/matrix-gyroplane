@@ -1,0 +1,7 @@
+<launch>
+
+  <include file="$(find hoverTracker)/launch/april.launch"/>
+
+  <node pkg="hoverTracker" type="tag_tf_listener.py" name="tag_tf_listener" output="screen"/>
+
+</launch>

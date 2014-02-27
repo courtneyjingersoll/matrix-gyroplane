@@ -1,0 +1,69 @@
+<!-- Hey, Emacs! This is an -*- xml -*- file!-->
+
+<launch>
+  <!-- Cam 0 --> 
+  <node name="usb_cam_vid0" pkg="usb_cam" type="usb_cam_node" output="screen" >
+    <param name="video_device" value="/dev/video0" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <!--<param name="image_width" value="160" />-->
+    <!--<param name="image_height" value="120" />-->
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node>
+  <node name="image_view_vid0" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/usb_cam_vid0/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+
+  <!-- Cam 1 -->
+  <node name="usb_cam_vid1" pkg="usb_cam" type="usb_cam_node" output="screen" >
+     <param name="video_device" value="/dev/video1" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <!--<param name="image_width" value="160" />-->
+    <!--<param name="image_height" value="120" />-->
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node>
+  <node name="image_view_vid1" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/usb_cam_vid1/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+
+  <!-- Cam 2 -->
+  <node name="usb_cam_vid2" pkg="usb_cam" type="usb_cam_node" output="screen" >
+     <param name="video_device" value="/dev/video2" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <!--<param name="image_width" value="160" />-->
+    <!--<param name="image_height" value="120" />-->
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node>
+  <node name="image_view_vid2" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/usb_cam_vid2/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+
+  <!-- Cam 3 -->
+  <node name="usb_cam_vid3" pkg="usb_cam" type="usb_cam_node" output="screen" >
+     <param name="video_device" value="/dev/video3" />
+    <param name="image_width" value="640" />
+    <param name="image_height" value="480" />
+    <!--<param name="image_width" value="160" />-->
+    <!--<param name="image_height" value="120" />-->
+    <param name="pixel_format" value="yuyv" />
+    <param name="camera_frame_id" value="usb_cam" />
+    <param name="io_method" value="mmap"/>
+  </node>
+  <node name="image_view_vid3" pkg="image_view" type="image_view" respawn="false" output="screen">
+    <remap from="image" to="/usb_cam_vid3/image_raw"/>
+    <param name="autosize" value="true" />
+  </node>
+
+
+</launch>
