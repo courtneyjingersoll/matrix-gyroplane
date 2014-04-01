@@ -7,23 +7,4 @@
     <param name="autosize" value="true" />
   </node>
 
-  <!-- Cam 1 -->
-  <node name="image_view_vid1" pkg="image_view" type="image_view" respawn="false" output="screen">
-    <remap from="image" to="cam1/usb_cam_vid1/image_raw"/>
-    <param name="autosize" value="true" />
-  </node>
-
-  <!-- Cam 2 -->
-  <node name="image_view_vid2" pkg="image_view" type="image_view" respawn="false" output="screen">
-    <remap from="image" to="cam2/usb_cam_vid2/image_raw"/>
-    <param name="autosize" value="true" />
-  </node>
-
-  <!-- Cam 3 -->
-  <node name="image_view_vid3" pkg="image_view" type="image_view" respawn="false" output="screen">
-    <remap from="image" to="cam3/usb_cam_vid3/image_raw"/>
-    <param name="autosize" value="true" />
-  </node>
-
-
 </launch>

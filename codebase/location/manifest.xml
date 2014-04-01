@@ -11,6 +11,8 @@
   <depend package="roscpp"/>
   <depend package="rospy"/>
   <depend package="std_msgs"/>
+  <depend package="april"/>
+  <depend package="ardrone_autonomy"/>
 
 </package>
 

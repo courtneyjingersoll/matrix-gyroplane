@@ -54,7 +54,7 @@
 	
   </node>
  
-  <node pkg="hoverTracker" type="tag_tf_broadcaster.py" name="tag_tf_broadcaster_cam0" output="screen">
+  <node pkg="tagDetector" type="tag_tf_broadcaster.py" name="tag_tf_broadcaster_cam0" output="screen">
     <remap from="/tags" to="/cam0/tags"/>
   </node>
 
